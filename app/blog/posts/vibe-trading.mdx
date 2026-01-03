@@ -1,0 +1,35 @@
+---
+title: 'Vibe Trading: AI-Powered Sentiment Momentum Strategy'
+publishedAt: '2026-01-04'
+summary: 'A quantitative trading system combining FinBERT sentiment analysis with Deep Reinforcement Learning (DRL) to capture alpha in volatile markets.'
+---
+
+## Project Overview
+
+**Vibe Trading** is an experimental quantitative trading system designed to quantify "market sentiment" (the "Vibe") and fuse it with traditional momentum indicators.
+
+The core hypothesis is that in high-volatility regimes, social sentiment leads price action. By using Large Language Models (LLMs) to analyze news and social signals, we can adjust the risk exposure of our RL agents dynamically.
+
+## Tech Stack
+
+* **Core Logic**: Python, Backtrader
+* **AI Models**: FinBERT (Sentiment), PPO (Proximal Policy Optimization)
+* **Infrastructure**: Docker, TimescaleDB
+* **Optimization**: X-of-Thought Prompting for signal filtering
+
+## Methodology
+
+### 1. Sentiment Extraction
+We scrape data from major financial news outlets and use **FinBERT** to classify headlines into `Positive`, `Negative`, or `Neutral`.
+
+### 2. Signal Fusion
+Instead of using sentiment as a direct trigger, we use it as a **state feature** in our DRL environment (OpenAI Gym interface). The agent learns to:
+- Increase position size when Sentiment > Threshold AND Momentum is Up.
+- Cut losses faster when Sentiment turns Negative.
+
+## Preliminary Results
+
+* **Sharpe Ratio**: 2.1 (Backtest 2023-2025)
+* **Max Drawdown**: -12%
+
+> "The market is not just numbers; it's a reflection of human psychology. Vibe Trading attempts to decode that psychology."
